@@ -1,6 +1,6 @@
 # テーブル設計
 
-## ユーザー情報テーブル
+## usersテーブル（ユーザー情報テーブル）
 
 | column             | type   | options                                 |
 | ------------------ | ------ | --------------------------------------- |
@@ -17,11 +17,11 @@
 - has_many : orders
 
 
-## 商品情報テーブル
+## itemsテーブル（商品情報テーブル）
 
 | column                   | type       | options                       |
 | ------------------------ | ---------- | ----------------------------- |
-| user                     | referenced | null: false, foreign_key: true|
+| user                     | references | null: false, foreign_key: true|
 | product_name             | string     | null: false                   |
 | product_description      | text       | null: false                   |
 | category_id              | integer    | null: false                   |
@@ -35,7 +35,7 @@
 - belongs_to : user
 
 
-## 購入記録テーブル
+## ordersテーブル（購入記録テーブル）
 
 | column | type       | options                        |
 | ------ | ---------- | ------------------------------ |
@@ -44,10 +44,10 @@
 ### association
 - belongs_to : user
 - belongs_to : item
-- belongs_to : address
+- has_one : address
 
 
-## 配送先情報テーブル
+## addressesテーブル（配送先情報テーブル）
 
 | column         | type       | options                        |
 | -------------- | ---------- | ------------------------------ |
