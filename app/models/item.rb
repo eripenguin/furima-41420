@@ -3,7 +3,7 @@ class Item < ApplicationRecord
 
   # テーブルとのアソシエーション
   belongs_to :user
-  has_one    :order
+  #has_one    :order
   # has_many :comments
 
   # アクティブハッシュとのアソシエーション
@@ -31,7 +31,7 @@ class Item < ApplicationRecord
   end
 
   # ジャンルの選択が「--」の時は保存不可
-  with_options numericality: { other_than: 0 } do
+  with_options numericality: { only_integer: true } do
     validates :category_id
     validates :prefecture_id
     validates :item_status_id

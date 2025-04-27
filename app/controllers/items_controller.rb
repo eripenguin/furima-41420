@@ -3,20 +3,22 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @items = Item.includes(:user).order('created_at DESC')
+    #@items = Item.includes(:user).order('created_at DESC')
   end
 
   def new
     @item = Item.new
   end
+
+  def show
+  end
   
   def create
-    binding.pry
     @item = Item.new(item_params)
     if @item.save
       redirect_to root_path
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
